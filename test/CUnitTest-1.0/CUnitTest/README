@@ -1,0 +1,8 @@
+CUnitTest
+
+A simple but fairly complete unit test framework for the C language in a single header file. The framework features fixtures, test suites and integration with XCode.
+
+This directory contains the CUnitTest framework in the header file CUnitTest.h and a small example of its usage in the file sample.c.
+
+Compile the example using your favorite C compiler, e.g. with gcc sample.c -o sample
+Running the executable should produce output detailing the tests and suites.
