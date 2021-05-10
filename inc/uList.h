@@ -23,11 +23,20 @@
 #include <string.h>
 
 
-struct node
+typedef struct node
 {
    struct node * nextNode;
    struct node * previousNode;
    void * value;
    uint16_t len;
    uint16_t index;
-};
+   uint8_t flag;
+}uNode_t;
+
+
+typedef struct 
+{
+   uNode_t * head;
+   uNode_t * tail;
+   uint16_t  numItems;
+}uList_t;
