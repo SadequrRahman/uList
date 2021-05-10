@@ -22,6 +22,15 @@
 #include <stdint.h>
 #include <string.h>
 
+typedef enum
+{
+   uErr_ok = 0,
+   uErr_fail,
+   uErr_invalid_list,
+   uErr_item_invalid,
+   uErr_index_invalid,
+   max_num_err
+}uErr_t;
 
 typedef struct node
 {
@@ -40,3 +49,16 @@ typedef struct
    uNode_t * tail;
    uint16_t  numItems;
 }uList_t;
+
+
+uList_t* uList_createList(void);
+uNode_t* uList_createNode( (void*) _val, uint16_t _len, uint8_t _f);
+uNode_t* uList_findByValue((void*) _val);
+uNode_t* uList_findByIdx(uint16_t _idx);
+uErr_t uList_append(uList_t * _list, uNode_t * _node);
+uErr_t uListInsertAt(uint16_t _idx, uNode_t * _node);
+uErr_t uList_remove(uList_t * _list);
+uErr_t uList_removeByIdx(uList_t * uList, uint16_t _idx);
+uErr_t uList_removeByValue(uList_t * uList), (void*) _val);
+uint16_t uList_getSize(uList_t * _list);
+
