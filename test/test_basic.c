@@ -12,23 +12,34 @@ void uList_test_setup(void)
 }
 
 
-int uList_test1(void)
+int uList_checkListCreation(void)
 {
-    CUT_ASSERT_NULL(list);
+    CUT_ASSERT_NOT_NULL(list);
     return 0;
 }
+
+int uList_createNodeaAndAppend(void)
+{
+    uNode_t *node = uList_createNode("first node to append", strlen("first node to append"), NODE_SELF_ALLOC);
+    uList_append(list, node);
+    int ret = memcmp("first node to append", node->value, node->len);
+    CUT_ASSERT_EQUAL(ret, 0); 
+    return 0;
+}
+
 
 
 
 void uList_test_teardown(void)
 {
     if(list)
-        uList_remove(list);
+      uList_remove(list);
 }
 
 
 CUT_BEGIN_SUITE_F(uList_test, &uList_test_setup, &uList_test_teardown)
-CUT_RUN_TEST(uList_test1);
+CUT_RUN_TEST(uList_checkListCreation);
+CUT_RUN_TEST(uList_createNodeaAndAppend);
 CUT_END_SUITE_F
 
 
