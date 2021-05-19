@@ -22,12 +22,17 @@
 #include <stdint.h>
 #include <string.h>
 
+typedef enum{
+   NODE_SELF_ALLOC,
+   NODE_NON_SELF_ALLOC
+}uNode_alloc_t;
+
 typedef enum
 {
    uErr_ok = 0,
    uErr_fail,
-   uErr_invalid_list,
-   uErr_item_invalid,
+   uErr_list_invalid,
+   uErr_node_invalid,
    uErr_index_invalid,
    max_num_err
 }uErr_t;
@@ -52,13 +57,13 @@ typedef struct
 
 
 uList_t* uList_createList(void);
-uNode_t* uList_createNode( (void*) _val, uint16_t _len, uint8_t _f);
-uNode_t* uList_findByValue((void*) _val);
-uNode_t* uList_findByIdx(uint16_t _idx);
+uNode_t* uList_createNode( void * _val, uint16_t _len, uNode_alloc_t _f);
+uNode_t* uList_findByValue(uList_t * _list, void * _val);
+uNode_t* uList_findByIdx(uList_t * _list, uint16_t _idx);
 uErr_t uList_append(uList_t * _list, uNode_t * _node);
-uErr_t uListInsertAt(uint16_t _idx, uNode_t * _node);
+uErr_t uList_insertAt(uList_t * _list, uint16_t _idx, uNode_t * _node);
 uErr_t uList_remove(uList_t * _list);
-uErr_t uList_removeByIdx(uList_t * uList, uint16_t _idx);
-uErr_t uList_removeByValue(uList_t * uList), (void*) _val);
+uErr_t uList_removeByIdx(uList_t * _list, uint16_t _idx);
+uErr_t uList_removeByValue(uList_t * _list, void * _val);
 uint16_t uList_getSize(uList_t * _list);
 
