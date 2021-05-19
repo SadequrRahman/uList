@@ -8,35 +8,22 @@ uList_t *list = NULL;
 
 void uList_test_setup(void) 
 {
-    printf("Setting up the test suit\r\n");
-    printf("Creating List............\r\n");
 	list = uList_createList();
-    if(list)
-        printf("List create successful\r\n");
-    else
-        printf("List create value with\r\n");
 }
 
 
 int uList_test1(void)
 {
-    CUT_ASSERT_NOT_NULL(list);
+    CUT_ASSERT_NULL(list);
     return 0;
 }
 
+
+
 void uList_test_teardown(void)
 {
-    printf("Test Completed\r\n");
     if(list)
-    {
-        printf("Removing the list.....\r\nSuccessful.\r\n");
         uList_remove(list);
-    }
-    else
-    {
-         printf("Removing the list failed\r\n");
-    }
-        
 }
 
 
