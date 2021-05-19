@@ -3,3 +3,6 @@ test : test.o
 
 test.o : test_basic.c
 	gcc -c test_basic.c -o test.o
+
+clean :
+	rm -f test.o test.exe
