@@ -2,3 +2,4 @@
 *.exe
 __MACOSX/
 *.bin
+.vscode/
