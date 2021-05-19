@@ -3,3 +3,4 @@
 __MACOSX/
 *.bin
 .vscode/
+./inc/LICENSE
