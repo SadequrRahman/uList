@@ -62,11 +62,6 @@ int uList_test_iterateFromTail()
     uNode_t * it = list->tail;
     printf("Num item: %d\r\n", list->numItems);
     CUT_ASSERT_MESSAGE("More item then appended", list->numItems == MAX_ITEM_NUM);
-    if (it == NULL)
-        printf("tails is null\r\n");
-    else
-        printf("Tails not null\r\n");
-    
     while (it)
     {
         printf("Value-> %s\r\n", (char*)it->value);
@@ -79,11 +74,26 @@ int uList_test_iterateFromTail()
     return 0;
 }
 
+void iter_test(void* value, uint16_t len)
+{
+    printf("value: %s\r\nLen: %d\r\n", (char*)value, len);
+}
+
+int uList_test_iterator()
+{
+    int i = 0;
+    uList_addingNodes();
+    void* value = (void*)0;
+    uint16_t len = 0;
+    ITERATE_LIST(list, value, len, printf("value: %s\r\nLen: %d\r\n", (char*)value, len));
+    return 0;
+}
 
 CUT_BEGIN_SUITE_F(uList_test, &uList_test_setup, &uList_test_teardown)
 CUT_RUN_TEST(uList_checkListCreation);
 CUT_RUN_TEST(uList_createNodeaAndAppend);
-CUT_RUN_TEST(uList_test_iterateFromTail);
+//CUT_RUN_TEST(uList_test_iterateFromTail);
+CUT_RUN_TEST(uList_test_iterator);
 CUT_END_SUITE_F
 
 
