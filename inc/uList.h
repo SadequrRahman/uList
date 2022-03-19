@@ -57,7 +57,6 @@ typedef struct
    uint16_t  numItems;
 }uList_t;
 
-//extern void code(void* value, uint16_t len); 
 
 #define ITERATE_LIST(list, value, len, code)                \
 do {                                            \
