@@ -4,4 +4,4 @@ __MACOSX/
 *.bin
 .vscode/
 ./inc/LICENSE
-test
+./test/test.o
