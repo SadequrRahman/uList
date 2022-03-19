@@ -74,10 +74,7 @@ int uList_test_iterateFromTail()
     return 0;
 }
 
-void iter_test(void* value, uint16_t len)
-{
-    printf("value: %s\r\nLen: %d\r\n", (char*)value, len);
-}
+
 
 int uList_test_iterator()
 {
@@ -85,7 +82,12 @@ int uList_test_iterator()
     uList_addingNodes();
     void* value = (void*)0;
     uint16_t len = 0;
-    ITERATE_LIST(list, value, len, printf("value: %s\r\nLen: %d\r\n", (char*)value, len));
+    ITERATE_LIST(list, value, len,  \
+        printf("Value-> %s\r\n", (char*)value); \
+        int ret = memcmp(strings[i], value, len); \
+        CUT_ASSERT_EQUAL(ret, 0);  \
+        i++;
+    );
     return 0;
 }
 
